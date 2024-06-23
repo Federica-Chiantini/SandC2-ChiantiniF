@@ -43,7 +43,7 @@ export class BlogService {
 
   getTuttiPost(post : string){
     this.FiltroSelezionato = post
-    this.listaPostsFiltrati = POSTS
+    this.listaPostsFiltrati = []
   }
 
 }
