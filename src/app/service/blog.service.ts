@@ -12,11 +12,23 @@ export class BlogService {
   constructor() { }
 
   getPost(){
-    return POSTS as unknown as TipoPost[];
+    return POSTS as TipoPost[];
   };
 
   getPostPreferito(postPr : TipoPost){
-    this.listaPreferiti.push(postPr)
-    console.log(this.listaPreferiti)
+    if(!this.listaPreferiti.find( p => p.id == postPr.id)){
+      this.listaPreferiti.push(postPr)
+      console.log(this.listaPreferiti)
+    }
   }
+
+  getRimuoviPreferito(prefer : number){
+    let postSelezionato = this.listaPreferiti.find(p => p.id == prefer)
+
+    if(postSelezionato){
+      const index = this.listaPreferiti.indexOf(postSelezionato);
+      this.listaPreferiti.splice(index, 1);
+    }
+  }
+
 }

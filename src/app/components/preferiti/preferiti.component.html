@@ -1,5 +1,11 @@
-<div>
-    <ul class="list-group" *ngFor="let p of arrayPreferiti.getPostPreferito">
-        <li class="list-group-item"></li>
-    </ul>
-</div>
+<ul class="list-group" *ngIf="arrayPreferiti.listaPreferiti.length > 0">
+    <li *ngFor="let p of arrayPreferiti.listaPreferiti" class="list-group-item">
+        {{p.title}}
+        &nbsp;
+        <button class="btn btn-danger" (click)="arrayPreferiti.getRimuoviPreferito(p.id)">Elimina</button>
+    </li>
+    <!--prodottiService classe che esporta servizio
+    prodottiACarrello array che sta dentro a prodottiService e che si fara' il ciclo-->
+</ul>
+<div *ngIf="arrayPreferiti.listaPreferiti.length==0">Nessun prodotto a carrello</div>
+

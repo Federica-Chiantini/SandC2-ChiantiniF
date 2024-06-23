@@ -9,4 +9,5 @@ import { BlogService } from '../../service/blog.service';
 export class PreferitiComponent {
   constructor(public arrayPreferiti : BlogService){
   }
+
 }
