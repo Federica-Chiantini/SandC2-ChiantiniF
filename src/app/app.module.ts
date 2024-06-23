@@ -7,6 +7,7 @@ import { GruppoPostsComponent } from './components/gruppo-posts/gruppo-posts.com
 import { PostSingoloComponent } from './components/post-singolo/post-singolo.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
+import { FiltroPostsComponent } from './components/filtro-posts/filtro-posts.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PreferitiComponent } from './components/preferiti/preferiti.component';
     GruppoPostsComponent,
     PostSingoloComponent,
     HeaderComponent,
-    PreferitiComponent
+    PreferitiComponent,
+    FiltroPostsComponent
   ],
   imports: [
     BrowserModule,

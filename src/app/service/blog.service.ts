@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { POSTS } from '../data/blog';
-import { TipoPost } from '../models/tipiBlog';
+import { POSTCATEGORIES, POSTS } from '../data/blog';
+import { TipoPost, TipoPostCateg } from '../models/tipiBlog';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { TipoPost } from '../models/tipiBlog';
 export class BlogService {
 
   listaPreferiti : TipoPost[] = [];
+  FiltroSelezionato : string = "";
+  listaPostsFiltrati : TipoPost [] = [];
 
   constructor() { }
 
@@ -15,10 +17,13 @@ export class BlogService {
     return POSTS as TipoPost[];
   };
 
+  getCategorie(){
+    return POSTCATEGORIES as TipoPostCateg[];
+  };
+
   getPostPreferito(postPr : TipoPost){
     if(!this.listaPreferiti.find( p => p.id == postPr.id)){
       this.listaPreferiti.push(postPr)
-      console.log(this.listaPreferiti)
     }
   }
 
@@ -29,6 +34,12 @@ export class BlogService {
       const index = this.listaPreferiti.indexOf(postSelezionato);
       this.listaPreferiti.splice(index, 1);
     }
+  }
+
+  getPostFiltrati(catSelezionata : TipoPostCateg){
+      this.FiltroSelezionato = catSelezionata.id
+      this.listaPostsFiltrati = POSTS.filter(f => f.category == this.FiltroSelezionato)
+      console.log(this.listaPostsFiltrati)
   }
 
 }

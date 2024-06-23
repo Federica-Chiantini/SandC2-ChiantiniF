@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { TipoPost } from '../../models/tipiBlog';
 import { BlogService } from '../../service/blog.service';
+import { POSTS } from '../../data/blog';
 
 @Component({
   selector: 'app-gruppo-posts',
   templateUrl: './gruppo-posts.component.html',
   styleUrl: './gruppo-posts.component.css'
 })
-export class GruppoPostsComponent implements OnInit {
+export class GruppoPostsComponent{
   listaPosts : TipoPost [] = [];
 
-  constructor(private servizio : BlogService){}
-
-  ngOnInit(): void {
-    this.listaPosts = this.servizio.getPost();
-    console.log(this.listaPosts)
+  constructor(public servizio : BlogService){
+      this.listaPosts = this.servizio.getPost();
   }
+
 }
