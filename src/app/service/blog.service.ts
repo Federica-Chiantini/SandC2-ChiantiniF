@@ -22,8 +22,8 @@ export class BlogService {
     }
   }
 
-  getRimuoviPreferito(prefer : number){
-    let postSelezionato = this.listaPreferiti.find(p => p.id == prefer)
+  getRimuoviPreferito(numPreferito : number){
+    let postSelezionato = this.listaPreferiti.find(p => p.id == numPreferito)
 
     if(postSelezionato){
       const index = this.listaPreferiti.indexOf(postSelezionato);

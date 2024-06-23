@@ -4,8 +4,6 @@
         &nbsp;
         <button class="btn btn-danger" (click)="arrayPreferiti.getRimuoviPreferito(p.id)">Elimina</button>
     </li>
-    <!--prodottiService classe che esporta servizio
-    prodottiACarrello array che sta dentro a prodottiService e che si fara' il ciclo-->
 </ul>
-<div *ngIf="arrayPreferiti.listaPreferiti.length==0">Nessun prodotto a carrello</div>
+<div *ngIf="arrayPreferiti.listaPreferiti.length==0"><p class="text-secondary">Nessun prodotto a carrello</p></div>
 
