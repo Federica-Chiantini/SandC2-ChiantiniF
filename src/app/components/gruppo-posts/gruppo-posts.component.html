@@ -1,11 +1,11 @@
-<div *ngIf="servizio.listaPostsFiltrati.length == 0">
+<div *ngIf="servizio.listaPostsFiltrati.length == 0 || servizio.FiltroSelezionato == 'tutti'">
 <section class="mb-4 mt-2" *ngIf="listaPosts">
 <app-post-singolo *ngFor="let p of listaPosts" [postSingolo]="p"></app-post-singolo>
 </section>
 </div>
-<div *ngIf="servizio.listaPostsFiltrati.length > 0"> <!--MANCA SOLO COLLEGAMENTO CON TUTTI-->
+<div *ngIf="servizio.listaPostsFiltrati.length > 0"> <!--MANCA SOLO COLLEGAMENTO CON  VOCE DELLA NAVBAR "TUTTI"-->
     <section class="mb-4 mt-2">
         <app-post-singolo *ngFor="let p of servizio.listaPostsFiltrati" [postSingolo]="p"></app-post-singolo>
         </section>
-    </div>
+</div>
 

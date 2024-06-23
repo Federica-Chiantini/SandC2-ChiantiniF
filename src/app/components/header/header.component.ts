@@ -9,7 +9,8 @@ import { BlogService } from '../../service/blog.service';
 })
 export class HeaderComponent {
   listaCategorie : TipoPostCateg [] = []
-constructor(private listaCat : BlogService){
+
+constructor(public listaCat : BlogService){
   this.listaCategorie = listaCat.getCategorie();
 }
 }

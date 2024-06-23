@@ -15,4 +15,10 @@ export class GruppoPostsComponent{
       this.listaPosts = this.servizio.getPost();
   }
 
+  getListaPost(){
+    if(this.listaPosts.length != 0){
+      this.listaPosts = this.servizio.getPost();
+    }
+  }
+
 }

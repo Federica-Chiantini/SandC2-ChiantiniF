@@ -39,7 +39,11 @@ export class BlogService {
   getPostFiltrati(catSelezionata : TipoPostCateg){
       this.FiltroSelezionato = catSelezionata.id
       this.listaPostsFiltrati = POSTS.filter(f => f.category == this.FiltroSelezionato)
-      console.log(this.listaPostsFiltrati)
+  }
+
+  getTuttiPost(post : string){
+    this.FiltroSelezionato = post
+    this.listaPostsFiltrati = POSTS
   }
 
 }
