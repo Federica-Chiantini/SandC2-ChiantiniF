@@ -1,9 +1,14 @@
-<ul class="list-group" *ngIf="arrayPreferiti.listaPreferiti.length > 0">
-    <li *ngFor="let p of arrayPreferiti.listaPreferiti" class="list-group-item">
-        {{p.title}}
-        &nbsp;
-        <button class="btn btn-danger" (click)="arrayPreferiti.getRimuoviPreferito(p.id)">Elimina</button>
-    </li>
-</ul>
-<div *ngIf="arrayPreferiti.listaPreferiti.length==0"><p class="text-secondary">Nessun prodotto a carrello</p></div>
+<div>
+    <h3 class="text-primary">Preferiti</h3>
+    <div *ngIf="bs.preferiti.length == 0">Nessun elemento inserito nei preferiti</div>
+    <div *ngIf="bs.preferiti.length > 0" class="bg-secondary-emphasis">
+        <div *ngFor="let p of bs.preferiti">
+        <div class="d-inline-flex gap-1 border-bottom m-1 p-1">  
+            <p>{{p.title}}</p><button class="btn btn-danger d-inline" (click)="bs.GetCancellaPreferito(p)">Cancella</button>
+        </div>
+    </div>
+    <button type="button" class="btn btn-warning" (click)="bs.getSvuotaPreferiti()">SVUOTA PREFERITI</button>
+    </div>
+</div>
+<hr>
 

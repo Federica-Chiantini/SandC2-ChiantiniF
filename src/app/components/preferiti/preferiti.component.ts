@@ -7,7 +7,7 @@ import { BlogService } from '../../service/blog.service';
   styleUrl: './preferiti.component.css'
 })
 export class PreferitiComponent {
-  constructor(public arrayPreferiti : BlogService){
-  }
+
+  constructor(public bs : BlogService){}
 
 }

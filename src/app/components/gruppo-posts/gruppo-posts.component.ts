@@ -1,7 +1,6 @@
 import { Component} from '@angular/core';
-import { TipoPost } from '../../models/tipiBlog';
+import { POST, POSTCATEGORY } from '../../models/tipiBlog';
 import { BlogService } from '../../service/blog.service';
-import { POSTS } from '../../data/blog';
 
 @Component({
   selector: 'app-gruppo-posts',
@@ -9,16 +8,22 @@ import { POSTS } from '../../data/blog';
   styleUrl: './gruppo-posts.component.css'
 })
 export class GruppoPostsComponent{
-  listaPosts : TipoPost [] = [];
+  Listaposts : POST[] = []
+  vociMenu : POSTCATEGORY[] = []
 
-  constructor(public servizio : BlogService){
-      this.listaPosts = this.servizio.getPost();
+constructor(public bs : BlogService){}
+
+  ngOnInit(): void {
+    this.vociMenu = this.bs.GetSoloLeCategorie()
+
+      this.Listaposts = this.bs.GetSoloIposts()
   }
 
-  getListaPost(){
-    if(this.listaPosts.length != 0){
-      this.listaPosts = this.servizio.getPost();
+  filterCat(cat? : POSTCATEGORY){
+    if (cat == undefined) {
+      this.Listaposts = this.bs.GetSoloIposts();
+    } else {
+      this.Listaposts = this.bs.getFiltro(cat);
     }
   }
-
 }

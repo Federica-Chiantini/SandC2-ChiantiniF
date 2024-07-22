@@ -1,49 +1,52 @@
 import { Injectable } from '@angular/core';
-import { POSTCATEGORIES, POSTS } from '../data/blog';
-import { TipoPost, TipoPostCateg } from '../models/tipiBlog';
+import { BLOGTipo, POST, POSTCATEGORY } from '../models/tipiBlog';
+import { BLOG } from '../data/blog';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
 
-  listaPreferiti : TipoPost[] = [];
-  FiltroSelezionato : string = "";
-  listaPostsFiltrati : TipoPost [] = [];
+  tuttiIposts : BLOGTipo = BLOG
+  selectedCategory ?: POSTCATEGORY 
+
+  preferiti : POST[] = []
 
   constructor() { }
 
-  getPost(){
-    return POSTS as TipoPost[];
-  };
+  GetSoloIposts(){
+    this.selectedCategory = undefined
+    return this.tuttiIposts.posts
+  }
 
-  getCategorie(){
-    return POSTCATEGORIES as TipoPostCateg[];
-  };
+  GetSoloLeCategorie(){
+    return this.tuttiIposts.postCategories
+  }
 
-  getPostPreferito(postPr : TipoPost){
-    if(!this.listaPreferiti.find( p => p.id == postPr.id)){
-      this.listaPreferiti.push(postPr)
+  GetPreferito(post : POST){
+    let p = this.preferiti.find(x => x.id == post.id);
+
+    if (!p) {
+      this.preferiti.push(post);
     }
-  }
+}
 
-  getRimuoviPreferito(numPreferito : number){
-    let postSelezionato = this.listaPreferiti.find(p => p.id == numPreferito)
-
-    if(postSelezionato){
-      const index = this.listaPreferiti.indexOf(postSelezionato);
-      this.listaPreferiti.splice(index, 1);
-    }
+GetCancellaPreferito(post : POST){
+  let e = this.preferiti.find( p => p.id == post.id)
+  
+  if(e){
+    this.preferiti.splice(this.preferiti.indexOf(e), 1)
   }
+}
 
-  getPostFiltrati(catSelezionata : TipoPostCateg){
-      this.FiltroSelezionato = catSelezionata.id
-      this.listaPostsFiltrati = POSTS.filter(f => f.category == this.FiltroSelezionato)
-  }
+getSvuotaPreferiti(){
+  this.preferiti = []
+}
 
-  getTuttiPost(post : string){
-    this.FiltroSelezionato = post
-    this.listaPostsFiltrati = []
-  }
+getFiltro(cat : POSTCATEGORY) {
+    this.selectedCategory = cat;
+    return this.tuttiIposts.posts.filter(x => x.category == this.selectedCategory!.id);
+}
 
 }

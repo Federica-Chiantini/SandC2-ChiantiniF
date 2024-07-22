@@ -1,11 +1,24 @@
-<div *ngIf="servizio.listaPostsFiltrati.length == 0 || servizio.FiltroSelezionato == 'tutti'">
-<section class="mb-4 mt-2" *ngIf="listaPosts">
-<app-post-singolo *ngFor="let p of listaPosts" [postSingolo]="p"></app-post-singolo>
-</section>
-</div>
-<div *ngIf="servizio.listaPostsFiltrati.length > 0"> 
-    <section class="mb-4 mt-2">
-        <app-post-singolo *ngFor="let p of servizio.listaPostsFiltrati" [postSingolo]="p"></app-post-singolo>
-        </section>
-</div>
-
+<div class="btn-group mb-2" role="group">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="filterCat(undefined)"
+      [ngClass]="{ active: bs.selectedCategory == undefined }"
+    >
+      Tutti
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      *ngFor="let c of vociMenu"
+      [ngClass]="{ active: bs.selectedCategory == c }"
+      (click)="filterCat(c)"
+    >
+      {{c.title}}
+    </button>
+  </div>
+  <ul class="list-group">
+      <li class="list-group-item" *ngFor="let p of Listaposts" >
+        <app-post-singolo [post]="p"></app-post-singolo>
+      </li>
+    </ul>

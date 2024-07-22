@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TipoPost } from '../../models/tipiBlog';
+import { POST } from '../../models/tipiBlog';
 import { BlogService } from '../../service/blog.service';
 
 @Component({
@@ -9,14 +9,7 @@ import { BlogService } from '../../service/blog.service';
 })
 export class PostSingoloComponent {
   @Input()
-  postSingolo ? : TipoPost;
+  post ? : POST
 
-  constructor(private postServizio : BlogService) {
-    
-  }
-
-  getPreferito(){
-    this.postServizio.getPostPreferito(this.postSingolo!)
-    console.log(this)
-  }
+  constructor(public bs : BlogService){}
 }

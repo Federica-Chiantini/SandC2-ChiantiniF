@@ -1,9 +1,7 @@
-<div class="card mb-2" *ngIf="postSingolo">
-    <div class="card-body">
-      <h5 class="card-title text-info-emphasis">{{postSingolo.title}}</h5>
-      <p class="card-text text-secondary">{{postSingolo.category}}</p>
-      <h6 class="card-text text-secondary-emphasis">{{postSingolo.date | date}}</h6>
-      <p class="card-text">{{postSingolo.body}}</p>
-      <button class="btn btn-primary" style="width: 18%" (click)="getPreferito()">Aggiungi ai Preferiti</button>
-    </div>
-  </div>
+<div *ngIf="post">
+  <h4>{{post.title}}</h4>
+  <h6 class="text-muted">{{post.category}}</h6>
+  <p>{{post.date | date}}</p>
+  <p>{{post.body}}</p>
+  <button type="button" class="btn btn-primary" (click)="bs.GetPreferito(post)">Aggiungi ai preferiti</button>
+</div>
